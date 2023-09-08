@@ -10,10 +10,11 @@ public class Department
 
 
     private List<Employee> employees = null!;
-    public List<Employee> Employees { 
+    public List<Employee> Employees 
+    { 
         get
         {
-            if(employees == null) employees = getEmployees();
+            if(employees == null) employees = getEmployees(); // On Demand Loading
             return employees;
         }
     }

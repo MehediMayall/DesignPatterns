@@ -1,6 +1,6 @@
 ﻿using FactoryMethod;
 
-IDatabase database = DatabaseFactory.CreateDatabase(DatabaseTypes.SqlServer);
+IDatabase database = DatabaseFactory.CreateDatabase(DatabaseTypes.OleDb);
 IDbCommand command = database.Command;
 
 command.CommandType = CommandType.Text;
@@ -19,3 +19,9 @@ reader.Read();
 command.Connection.Close();
 
 
+
+// Factory Method
+
+// SQlServer, Mysql, Sqlite = IDatabase
+
+// Client = 

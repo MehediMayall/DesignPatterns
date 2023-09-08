@@ -2,6 +2,8 @@ namespace FactoryMethod;
 
 public class DatabaseFactory
 {
+
+    // Factory Method
     public static IDatabase CreateDatabase(DatabaseTypes databaseTypes)
     {
         return databaseTypes switch
