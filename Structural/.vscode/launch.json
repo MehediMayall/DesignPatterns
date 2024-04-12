@@ -8,7 +8,7 @@
             "name": "C#: <project-name> Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/FacadePattern/FacadePattern.csproj"
+            "projectPath": "${workspaceFolder}/AdapterPattern/AdapterPattern.csproj"
         }
         
 
