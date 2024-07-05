@@ -3,10 +3,11 @@ namespace BookingSystem;
 public class GuestUserState : IBookingSystem
 {
     private readonly ILogService logService;
-    public GuestUserState(ILogService logService)
+    private readonly ILogInService logInService;
+    public GuestUserState(ILogInService logInService, ILogService logService)
     {
-        this.logService = logService;
-        
+        this.logInService = logInService;
+        this.logService = logService;        
     }
 
     public void BookTicket(BookingContext context) => logService.logError("Please login first");
@@ -15,12 +16,14 @@ public class GuestUserState : IBookingSystem
     public void CancelBooking(BookingContext context) => logService.logError("Please login first");
 
 
-    public void Login(BookingContext context, string username, string password)
+    public void Login(BookingContext context)
     {
-        logService.log("->| Login successfully");
+        logInService.LogIn();
+
+        // Next State
         var logger = new LogService();
-        var LogoutService = new LogOutService(logger);
-        context.SetNextState(new NewBookingState(new BookTicketService( logger),logger, LogoutService));
+        var LogoutService = new LogOutService(logger);        
+        context.SetNextState(new NewBookingState(new BookTicketService(logger),logger, LogoutService));
     }
 
     public void Logout(BookingContext context) => logService.logError("Please login first");

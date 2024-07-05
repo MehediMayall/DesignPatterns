@@ -12,8 +12,8 @@ public class BookingContext
     public void SetNextState(IBookingSystem state) => 
         this.bookingState = state;
 
-    public void Login(string UserName, string Password) => 
-        this.bookingState.Login(this, UserName,Password);
+    public void Login() => 
+        this.bookingState.Login(this);
 
     public void BookTicket() => bookingState.BookTicket(this);
     public void ShowBookings() => bookingState.ShowBookings(this);

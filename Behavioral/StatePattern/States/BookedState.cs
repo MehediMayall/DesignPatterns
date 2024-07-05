@@ -23,11 +23,15 @@ public class BookedState : IBookingSystem
         logService.logError("No booking found");
 
 
-    public void Login(BookingContext context, string username, string password) =>
+    public void Login(BookingContext context) =>
         logService.log("You are already logged in");
 
-    public void Logout(BookingContext context) => 
+    public void Logout(BookingContext context) 
+     {
         logOutService.LogOut();
+        var logger = new LogService();
+        context.SetNextState(new GuestUserState(new LogInService(logger), logger));
+    }
 
     public void ShowBookings(BookingContext context) => logService.logError("No booking found");
 
