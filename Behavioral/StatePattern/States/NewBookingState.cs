@@ -18,7 +18,7 @@ public class NewBookingState : IBookingSystem
     {
         bookTicketService.BookTicket();
         var logger = new LogService();
-        context.SetNextState(new BookedState(new LogOutService(logger), logger));
+        context.SetNextState(new BookedState(new LogOutService(logger), logger, new BookingCancelService(logger)));
     }
 
     

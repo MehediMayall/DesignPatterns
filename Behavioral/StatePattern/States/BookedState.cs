@@ -4,9 +4,11 @@ public class BookedState : IBookingSystem
 {
     private readonly ILogService logService;
     private readonly ILogOutService logOutService;
+    private readonly IBookingCancelService bookingCancelService;
 
-    public BookedState(ILogOutService logOutService, ILogService logService)
+    public BookedState(ILogOutService logOutService, ILogService logService, IBookingCancelService bookingCancelService)
     {
+        this.bookingCancelService = bookingCancelService;
         this.logService = logService;
         this.logOutService = logOutService;
     }
@@ -19,8 +21,10 @@ public class BookedState : IBookingSystem
 
 
 
-    public void CancelBooking(BookingContext context) => 
-        logService.logError("No booking found");
+    public void CancelBooking(BookingContext context) 
+    {
+        bookingCancelService.CancelBooking();
+    }
 
 
     public void Login(BookingContext context) =>
