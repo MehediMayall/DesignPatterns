@@ -5,12 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C#: <project-name> Debug",
+            "name": "C#: DesignPattern Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/AdapterPattern/AdapterPattern.csproj"
+            "projectPath": "${workspaceFolder}/CompositePattern/CompositePattern.csproj"
         }
-        
 
     ]
 }
