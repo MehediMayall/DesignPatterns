@@ -5,13 +5,17 @@ using static System.Console;
 
 IHost host = Host.CreateDefaultBuilder().ConfigureServices(services =>
 {
-    services.AddSingleton<ILogInService, LogInService>();
     services.AddSingleton<ILogService, LogService>();
+
+    services.AddSingleton<ILogInService, LogInService>();
+    services.AddSingleton<ILogOutService, LogOutService>();
+
+    services.AddSingleton<IBookTicketService, BookTicketService>();
+    services.AddSingleton<IBookingCancelService, BookingCancelService>();
+    services.AddSingleton<IBookingDisplayService, BookingDisplayService>();
 }).Build();
 
 
-// var logger = new LogService();
-// var loginService = new LogInService();
 
 var booking = new BookingContext(new GuestUserState(host.Services.GetRequiredService<ILogInService>(), host.Services.GetRequiredService<ILogService>()));
 
