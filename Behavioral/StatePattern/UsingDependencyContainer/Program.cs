@@ -13,11 +13,19 @@ IHost host = Host.CreateDefaultBuilder().ConfigureServices(services =>
     services.AddSingleton<IBookTicketService, BookTicketService>();
     services.AddSingleton<IBookingCancelService, BookingCancelService>();
     services.AddSingleton<IBookingDisplayService, BookingDisplayService>();
+
+     
+    services.AddTransient<IBookingSystem, GuestUserState>();
+    services.AddTransient<IBookingSystem, NewBookingState>();
+    services.AddTransient<IBookingSystem, BookedState>();
+
+    // services.AddTransient<BookingContext>();
+
 }).Build();
 
 
-
-var booking = new BookingContext(new GuestUserState(host.Services.GetRequiredService<ILogInService>(), host.Services.GetRequiredService<ILogService>()));
+var guestUser = host.Services.GetRequiredService<GuestUserState>();
+var booking = new BookingContext(guestUser);
 
 int userSelectionNo = 9;
 while (userSelectionNo > 0)
