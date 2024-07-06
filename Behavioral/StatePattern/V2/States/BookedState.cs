@@ -13,12 +13,8 @@ public class BookedState : IBookingSystem
         this.logOutService = logOutService;
     }
 
-    public void BookTicket(BookingContext context) 
-    {
+    public void BookTicket(BookingContext context) =>
         logService.log("Successfully booked ticket");
-        
-    }
-
 
 
     public void CancelBooking(BookingContext context) 
@@ -34,7 +30,7 @@ public class BookedState : IBookingSystem
      {
         logOutService.LogOut();
         var logger = new LogService();
-        context.SetNextState(new GuestUserState(new LogInService(logger), logger));
+        context.SetNextState(new GuestUserState(new LogInService(), logger));
     }
 
     public void ShowBookings(BookingContext context) => logService.logError("No booking found");
