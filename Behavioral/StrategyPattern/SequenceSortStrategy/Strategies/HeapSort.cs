@@ -2,8 +2,8 @@ namespace SequenceSortStrategy;
 
 public class HeapSort : ISortStrategy
 {
-    public void Sort(int[] numbers)
+    public int[] Sort(int[] numbers)
     {
-        throw new NotImplementedException();
+        return numbers.OrderBy(x=> x).ToArray();
     }
 }

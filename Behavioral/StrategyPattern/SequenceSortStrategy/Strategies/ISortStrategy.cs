@@ -2,6 +2,6 @@ namespace SequenceSortStrategy;
 
 public interface ISortStrategy
 {
-    void Sort(int[] numbers);
+    int[] Sort(int[] numbers);
 }
 
