@@ -7,8 +7,11 @@ Result<int> Divide(int x, int y)
     if (y == 0)
         return Result.Failure<int>(CalculatorErrors.DivideByZero());
 
-    return Result.Success(x / y);
+    // return Result.Success(x / y);
+    return x / y;
 }
+
+
 
 
 Result DivideAndPrint(int x, int y)
