@@ -1,0 +1,6 @@
+@MinimalApiCqrs_HostAddress = http://localhost:5213
+
+GET {{MinimalApiCqrs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
