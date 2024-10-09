@@ -1,15 +1,21 @@
 
+using Microsoft.EntityFrameworkCore;
+
 namespace CqrsWithEvents;
 
 public class ReadOrderRepository : IReadOrderRepository
 {
-    public Task<Order> GetOrderById(Guid orderId)
-    {
-        throw new NotImplementedException();
-    }
+    private readonly AppDbContext db;
 
-    public Task<List<Order>> GetOrders()
+    public ReadOrderRepository(AppDbContext db)
     {
-        throw new NotImplementedException();
+        this.db = db;
     }
+    public async Task<Order?> GetOrderById(Guid orderId) =>
+        await db.Orders.FirstOrDefaultAsync(order => order.Id == orderId) ?? default;
+    
+
+    public async Task<List<Order>> GetOrders() =>
+        await db.Orders.ToListAsync();
+    
 }

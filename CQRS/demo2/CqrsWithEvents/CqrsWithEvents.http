@@ -1,6 +1,23 @@
-@CqrsWithEvents_HostAddress = http://localhost:5248
+@endpoint = http://localhost:3500
+@orderId =  1a4251fd-988a-4f65-a95e-8a4acd7d93f4
 
-GET {{CqrsWithEvents_HostAddress}}/weatherforecast/
+GET {{endpoint}}/orders/
 Accept: application/json
+
+###
+
+GET {{endpoint}}/orders/{{orderId}}
+Accept: application/json
+
+###
+
+POST {{endpoint}}/orders/
+Content-Type: application/json
+
+{
+    "amount" : 200,
+    "currency": "USD",
+    "customerEmail": "mehedi@gmail.com"
+}
 
 ###

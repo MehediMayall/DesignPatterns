@@ -4,9 +4,15 @@ namespace CqrsWithEvents;
 
 public class WriteOrderRepository : IWriteOrderRepository
 {
-    public Task CreateOrder(Order order)
+    private readonly AppDbContext db;
+
+    public WriteOrderRepository(AppDbContext db)
     {
-        throw new NotImplementedException();
+        this.db = db;
+    }
+    public async Task CreateOrder(Order order){
+        db.Orders.Add(order);
+        await db.SaveChangesAsync();
     }
 
     public Task<bool> DeleteOrder(Guid orderId)

@@ -1,6 +1,6 @@
 namespace CqrsWithEvents;
 
-public class CreateOrderCommand(Order order) : ICommand
+public class CreateOrderCommand(OrderForCreateDto order) : ICommand
 {
-    public Order Order { get; } = order;
+    public OrderForCreateDto Order { get; } = order;
 }
